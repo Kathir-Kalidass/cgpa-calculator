@@ -3,8 +3,8 @@ import { formatFormula } from '../../utils/cgpaFormula';
 export default function CalculationFormula({ totalPoints, totalCredits }) {
   return (
     <section className="formula-box">
-      <h3>GPA Calculation Formula</h3>
-      <p>CGPA = Total Points Earned / Total Credits Earned</p>
+      <h3>GPA Formula</h3>
+      <p>CGPA = &Sigma;(Credits × Grade Points) / &Sigma;(Credits)</p>
       <strong>{formatFormula(totalPoints, totalCredits)}</strong>
     </section>
   );

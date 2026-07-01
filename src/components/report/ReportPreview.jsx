@@ -34,6 +34,10 @@ export default function ReportPreview({ reportRef }) {
         <section key={sem.semesterIndex} className="report-semester">
           <h3>{sem.name}  |  GPA: <span className="sem-gpa">{sem.gpa.toFixed(2)}</span></h3>
           <SemesterTable rows={sem.rows} />
+          <div className="report-semester-summary">
+            <span>Credits: <strong>{sem.totalCredits}</strong></span>
+            <span>Points: <strong>{sem.totalPoints.toFixed(1)}</strong></span>
+          </div>
         </section>
       ))}
       <OverallSummary overall={cgpa.overall} />
