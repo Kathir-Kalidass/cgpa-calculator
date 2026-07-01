@@ -7,8 +7,18 @@ import ReportHeader from './ReportHeader';
 import SemesterTable from './SemesterTable';
 
 export default function ReportPreview({ reportRef }) {
-  const { settings, student, subjects, cgpa } = useApp();
+  const { settings, student, subjects, semesterGrades, semesterCustomizations, cgpa } = useApp();
   const meta = useMemo(() => buildReportMeta({ settings, student }), [settings, student]);
+
+  const allSemesterRows = cgpa.overall.semesterResults.map((result) => {
+    const custom = semesterCustomizations?.[result.semesterIndex] || {};
+    const names = custom.customNames || {};
+    const rows = result.rows.map((r) => ({
+      ...r,
+      name: names[r.id] || r.name,
+    }));
+    return { ...result, rows };
+  });
 
   return (
     <article className="report-page" ref={reportRef}>
@@ -18,14 +28,14 @@ export default function ReportPreview({ reportRef }) {
         <p><span>Register No.</span><strong>{student.registerNumber}</strong></p>
         <p><span>Department</span><strong>{meta.department}</strong></p>
         <p><span>Regulation</span><strong>{meta.regulation}</strong></p>
-        <p><span>Semester</span><strong>{settings.semester}</strong></p>
         <p><span>Generated</span><strong>{meta.generatedAt}</strong></p>
       </section>
-      <section>
-        <h3>{subjects.currentSemester.name} Detailed Calculation</h3>
-        <SemesterTable rows={cgpa.semester.rows} />
-        <p className="report-gpa">Semester GPA: <strong>{cgpa.semester.gpa.toFixed(2)}</strong></p>
-      </section>
+      {allSemesterRows.map((sem) => (
+        <section key={sem.semesterIndex} className="report-semester">
+          <h3>{sem.name}  |  GPA: <span className="sem-gpa">{sem.gpa.toFixed(2)}</span></h3>
+          <SemesterTable rows={sem.rows} />
+        </section>
+      ))}
       <OverallSummary overall={cgpa.overall} />
       <CalculationFormula totalPoints={cgpa.overall.totalPoints} totalCredits={cgpa.overall.totalCredits} />
       <footer className="report-footer">

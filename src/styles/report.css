@@ -6,83 +6,168 @@
 .report-page {
   width: min(100%, 820px);
   background: #fff;
-  color: #111827;
-  padding: 28px;
+  color: #1f2937;
+  padding: 32px;
   border-radius: 8px;
   box-shadow: var(--shadow);
 }
 
 .report-header {
   display: grid;
-  grid-template-columns: 86px 1fr 86px;
-  gap: 20px;
+  grid-template-columns: 80px 1fr 80px;
+  gap: 16px;
   align-items: center;
   text-align: center;
-  border-bottom: 1px solid #d1d5db;
+  border-bottom: 2px solid #d1d5db;
   padding-bottom: 16px;
   text-transform: uppercase;
 }
 
 .report-header img {
-  width: 70px;
-  height: 70px;
+  width: 65px;
+  height: 65px;
   object-fit: contain;
 }
 
-.report-header h1,
-.report-header h2,
+.report-header h1 {
+  font-size: 16px;
+  margin: 4px 0 0;
+  color: #92400e;
+}
+
+.report-header h2 {
+  font-size: 13px;
+  margin: 0;
+  font-weight: 600;
+  color: #4b5563;
+}
+
 .report-header p {
-  margin: 0 0 6px;
+  font-size: 11px;
+  margin: 2px 0 0;
+  color: #6b7280;
 }
 
 .report-meta {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px 28px;
-  margin: 20px 0;
+  gap: 6px 28px;
+  margin: 18px 0;
+  font-size: 13px;
 }
 
-.report-meta p,
-.report-summary p {
+.report-meta p {
   display: flex;
   justify-content: space-between;
-  gap: 16px;
+  gap: 12px;
   margin: 0;
+  padding: 4px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.report-semester {
+  margin-bottom: 20px;
+  page-break-inside: avoid;
+}
+
+.report-semester h3 {
+  font-size: 13px;
+  color: #4b5563;
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.sem-gpa {
+  color: #b45309;
+  font-weight: 700;
 }
 
 .report-table {
   width: 100%;
   border-collapse: collapse;
-  margin: 12px 0;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .report-table th,
 .report-table td {
-  border: 1px solid #cbd5e1;
-  padding: 7px 8px;
+  border: 1px solid #d1d5db;
+  padding: 6px 8px;
   text-align: left;
 }
 
 .report-table th {
-  background: #eef2f7;
+  background: #f9fafb;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: #6b7280;
 }
 
-.report-summary,
-.formula-box {
-  margin-top: 18px;
-  border-top: 1px solid #e5e7eb;
+.report-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 16px;
+  border-top: 2px solid #e5e7eb;
   padding-top: 14px;
 }
 
-.report-gpa {
-  text-align: right;
-  font-size: 16px;
+.report-summary h3 {
+  grid-column: 1 / -1;
+  font-size: 14px;
+  margin: 0 0 4px;
+  color: #374151;
+}
+
+.report-summary p {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0;
+  font-size: 12px;
+  padding: 4px 8px;
+  background: #f9fafb;
+  border-radius: 4px;
+}
+
+.formula-box {
+  margin-top: 12px;
+  padding: 12px;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.formula-box h3 {
+  font-size: 12px;
+  margin: 0 0 6px;
+  color: #92400e;
+  text-transform: uppercase;
+}
+
+.formula-box p {
+  font-size: 12px;
+  margin: 0;
+  color: #6b7280;
+}
+
+.formula-box strong {
+  display: block;
+  font-size: 14px;
+  color: #b45309;
+  margin-top: 4px;
 }
 
 .report-footer {
   display: flex;
   justify-content: space-between;
-  margin-top: 42px;
-  font-size: 12px;
+  margin-top: 36px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 11px;
+  color: #9ca3af;
 }

@@ -6,7 +6,6 @@ export function buildReportMeta({ settings, student }) {
     student,
     department: settings.department.toUpperCase(),
     regulation: settings.regulation,
-    semester: settings.semester,
     generatedAt: formatDateTime(),
   };
 }

@@ -7,25 +7,25 @@ import { useApp } from '../context/AppContext';
 import Calculator from './Calculator';
 
 export default function Home() {
-  const { cgpa, history, settings } = useApp();
+  const { cgpa, history, student } = useApp();
 
   return (
     <main className="page">
       <div className="page-title">
         <div>
-          <h1>Welcome, Kathir!</h1>
-          <p>Calculate, analyze, and export a professional CGPA report.</p>
+          <h1>Welcome, {student.name}!</h1>
+          <p>Calculate your CGPA across all semesters and export a professional report.</p>
         </div>
       </div>
       <section className="stats-grid">
-        <CreditCard value={cgpa.overall.totalCredits} hint="/ 160" />
-        <CGPACard value={cgpa.overall.cgpa.toFixed(2)} hint={`Till Semester ${settings.semester}`} />
+        <CGPACard value={cgpa.overall.cgpa.toFixed(2)} hint="Overall CGPA" />
+        <CreditCard value={cgpa.overall.totalCredits} hint="Total credits earned" />
         <StatsCard icon={Award} label="Highest GPA" value={cgpa.overall.highestGPA.toFixed(2)} hint="Best semester" />
         <StatsCard icon={Gauge} label="Average GPA" value={cgpa.overall.averageGPA.toFixed(2)} hint="All semesters" />
       </section>
       <Calculator embedded />
       <section className="feature-grid">
-        <StatsCard icon={BookOpen} label="Subject Database" value="CSE + IT" hint="Regulation-ready JSON data" />
+        <StatsCard icon={BookOpen} label="Regulation" value={`${cgpa.overall.semesterResults.length} Semesters`} hint="All semesters loaded" />
         <RecentCalculation history={history} />
       </section>
     </main>

@@ -1,36 +1,60 @@
-import Card from '../components/common/Card';
+import { ArrowUp } from 'lucide-react';
 import GradeLegend from '../components/calculator/GradeLegend';
-import SemesterResult from '../components/calculator/SemesterResult';
-import SubjectTable from '../components/calculator/SubjectTable';
+import SemesterBlock from '../components/calculator/SemesterBlock';
 import { useApp } from '../context/AppContext';
 
 export default function Calculator({ embedded = false }) {
-  const { settings, subjects, grades, updateGrade, updateSetting, cgpa } = useApp();
+  const {
+    settings, subjects, semesterGrades, semesterCustomizations,
+    updateSemesterGrade, toggleDropSubject, editSubjectName, addSubject, removeAddedSubject, cgpa,
+  } = useApp();
+
+  const { overall } = cgpa;
 
   return (
     <main className={embedded ? '' : 'page'}>
-      {!embedded ? (
+      {!embedded && (
         <div className="page-title">
           <div>
-            <h1>Semester Calculator</h1>
-            <p>Select semester subjects and enter grades to calculate GPA.</p>
+            <h1>CGPA Calculator</h1>
+            <p>Enter grades for each semester. CGPA updates automatically.</p>
           </div>
         </div>
-      ) : null}
-      <Card>
-        <div className="card-heading">
-          <h2>{subjects.currentSemester.name} GPA Calculator</h2>
-          <label>
-            Semester
-            <select value={settings.semester} onChange={(event) => updateSetting('semester', Number(event.target.value))}>
-              {subjects.semesters.map((semester, index) => <option key={semester.name} value={index + 1}>Semester {index + 1}</option>)}
-            </select>
-          </label>
+      )}
+      <div className="cgpa-banner">
+        <div className="cgpa-banner-main">
+          <span className="cgpa-label">Overall CGPA</span>
+          <span className="cgpa-value">{overall.cgpa.toFixed(2)}</span>
         </div>
-        <SubjectTable subjects={subjects.currentSubjects} grades={grades} onGradeChange={updateGrade} />
-        <SemesterResult semester={subjects.currentSemester} result={cgpa.semester} />
-      </Card>
-      {!embedded ? <GradeLegend /> : null}
+        <div className="cgpa-banner-stats">
+          <span>Total Credits: <strong>{overall.totalCredits}</strong></span>
+          <span>Total Points: <strong>{overall.totalPoints.toFixed(1)}</strong></span>
+          <span>Highest GPA: <strong>{overall.highestGPA.toFixed(2)}</strong></span>
+          <span>Avg GPA: <strong>{overall.averageGPA.toFixed(2)}</strong></span>
+        </div>
+      </div>
+      <div className="semesters-list">
+        {subjects.semesters.map((sem) => (
+          <SemesterBlock
+            key={sem.semesterIndex}
+            semester={sem}
+            semesterIndex={sem.semesterIndex}
+            grades={semesterGrades}
+            customizations={semesterCustomizations}
+            onGradeChange={(subjectId, point) => updateSemesterGrade(sem.semesterIndex, subjectId, point)}
+            onToggleDrop={(subjectId) => toggleDropSubject(sem.semesterIndex, subjectId)}
+            onNameEdit={(subjectId, name) => editSubjectName(sem.semesterIndex, subjectId, name)}
+            onAddSubject={(subject) => addSubject(sem.semesterIndex, subject)}
+            onRemoveAdded={(subjectId) => removeAddedSubject(sem.semesterIndex, subjectId)}
+          />
+        ))}
+      </div>
+      {subjects.semesters.length > 0 && (
+        <p className="gpa-formula-display">
+          CGPA = {overall.totalPoints.toFixed(1)} / {overall.totalCredits} = {overall.cgpa.toFixed(2)}
+        </p>
+      )}
+      {!embedded && <GradeLegend />}
     </main>
   );
 }

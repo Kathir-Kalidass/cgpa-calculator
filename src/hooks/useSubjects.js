@@ -11,18 +11,14 @@ const regulations = {
 export function useSubjects(settings) {
   const regulation = regulations[settings.regulation] || regulations['2023'];
   const data = regulation[settings.department] || regulation.cse;
-  const semesters = data.semesters || [];
-  const selectedSemesters = semesters.slice(0, settings.semester);
-  const currentSemester = selectedSemesters[selectedSemesters.length - 1] || { name: 'Semester I', courses: [] };
-
-  return {
-    data,
-    semesters,
-    selectedSemesters,
-    currentSemester,
-    currentSubjects: currentSemester.courses.map((course, index) => ({
+  const semesters = (data.semesters || []).map((sem, sIdx) => ({
+    ...sem,
+    semesterIndex: sIdx,
+    courses: sem.courses.map((course, cIdx) => ({
       ...course,
-      id: `s${settings.semester - 1}c${index}`,
+      id: `s${sIdx}c${cIdx}`,
     })),
-  };
+  }));
+
+  return { data, semesters };
 }

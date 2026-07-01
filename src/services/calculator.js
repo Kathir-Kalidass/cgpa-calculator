@@ -1,6 +1,7 @@
-export function calculateSemester(subjects, grades, defaultGrade = 10) {
-  const rows = subjects.map((subject) => {
-    const gradePoint = Number(grades[subject.id] ?? defaultGrade);
+export function calculateSemester(subjects, semesterGrades, defaultGrade = 10) {
+  const activeSubjects = subjects.filter((s) => !s.dropped);
+  const rows = activeSubjects.map((subject) => {
+    const gradePoint = Number(semesterGrades?.[subject.id] ?? defaultGrade);
     const pointsEarned = subject.credits * gradePoint;
     return { ...subject, gradePoint, pointsEarned };
   });
@@ -14,24 +15,16 @@ export function calculateSemester(subjects, grades, defaultGrade = 10) {
   };
 }
 
-export function calculateOverall(semesters, grades, defaultGrade = 10) {
-  const semesterResults = semesters.map((semester, semesterIndex) => {
-    const subjects = semester.courses.map((course, courseIndex) => ({
-      ...course,
-      id: `s${semesterIndex}c${courseIndex}`,
-      semesterName: semester.name,
-    }));
-    return { ...calculateSemester(subjects, grades, defaultGrade), name: semester.name, semester: semesterIndex + 1 };
-  });
-  const totalCredits = semesterResults.reduce((sum, result) => sum + result.totalCredits, 0);
-  const totalPoints = semesterResults.reduce((sum, result) => sum + result.totalPoints, 0);
-  const gpas = semesterResults.map((result) => result.gpa);
+export function calculateOverall(semesterResults) {
+  const totalCredits = semesterResults.reduce((sum, r) => sum + r.totalCredits, 0);
+  const totalPoints = semesterResults.reduce((sum, r) => sum + r.totalPoints, 0);
+  const gpas = semesterResults.map((r) => r.gpa).filter((g) => g > 0);
   return {
     semesterResults,
     totalCredits,
     totalPoints,
     cgpa: totalCredits ? totalPoints / totalCredits : 0,
     highestGPA: gpas.length ? Math.max(...gpas) : 0,
-    averageGPA: gpas.length ? gpas.reduce((sum, gpa) => sum + gpa, 0) / gpas.length : 0,
+    averageGPA: gpas.length ? gpas.reduce((sum, g) => sum + g, 0) / gpas.length : 0,
   };
 }

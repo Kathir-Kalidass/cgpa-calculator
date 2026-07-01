@@ -1,19 +1,18 @@
-import { BarChart3, BookOpen, Calculator, FileText, GraduationCap, History, LayoutDashboard, Settings } from 'lucide-react';
+import { BarChart3, BookOpen, Calculator, FileText, GraduationCap, History, LayoutDashboard } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { LOGOS } from '../../utils/constants';
 
 const links = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/calculator', label: 'Semester Calculator', icon: Calculator },
+  { to: '/calculator', label: 'CGPA Calculator', icon: Calculator },
   { to: '/report', label: 'Reports', icon: FileText },
-  { to: '/history', label: 'Calculation History', icon: History },
-  { to: '/about', label: 'Subject List', icon: BookOpen },
-  { to: '/about', label: 'Settings', icon: Settings },
+  { to: '/history', label: 'History', icon: History },
+  { to: '/about', label: 'Subjects', icon: BookOpen },
 ];
 
 export default function Sidebar() {
-  const { cgpa, settings, student } = useApp();
+  const { cgpa, student } = useApp();
 
   return (
     <aside className="sidebar">
@@ -21,7 +20,7 @@ export default function Sidebar() {
         <img src={LOGOS.app} alt="CGPA Calculator logo" />
         <div>
           <strong>CGPA Calculator</strong>
-          <span>CSE & IT Department</span>
+          <span>CSE & IT</span>
         </div>
       </div>
       <nav>
@@ -32,16 +31,16 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="sidebar-card">
-        <span>Current CGPA</span>
+        <span>Overall CGPA</span>
         <strong>{cgpa.overall.cgpa.toFixed(2)}</strong>
-        <small>Till Semester {settings.semester}</small>
+        <small>{cgpa.overall.semesterResults.length} semesters</small>
         <BarChart3 size={48} />
       </div>
       <div className="profile-card">
         <GraduationCap size={28} />
         <div>
           <strong>{student.name}</strong>
-          <span>{settings.department.toUpperCase()} - {student.batch}</span>
+          <span>{student.batch}</span>
         </div>
       </div>
     </aside>

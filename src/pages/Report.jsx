@@ -10,10 +10,10 @@ export default function Report() {
     <main className="page">
       <div className="page-title">
         <div>
-          <h1>Exportable Report</h1>
-          <p>Preview the professional PDF report before exporting.</p>
+          <h1>Academic Transcript</h1>
+          <p>Full semester-wise report. Export as PDF.</p>
         </div>
-        <ExportButton targetRef={reportRef} filename="cgpa-calculation-report.pdf" />
+        <ExportButton targetRef={reportRef} filename="cgpa-academic-transcript.pdf" />
       </div>
       <ReportLayout>
         <ReportPreview reportRef={reportRef} />
