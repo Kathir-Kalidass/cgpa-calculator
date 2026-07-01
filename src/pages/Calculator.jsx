@@ -6,7 +6,7 @@ import { useApp } from '../context/AppContext';
 export default function Calculator({ embedded = false }) {
   const {
     settings, subjects, semesterGrades, semesterCustomizations,
-    updateSemesterGrade, toggleDropSubject, editSubjectName, addSubject, removeAddedSubject, cgpa,
+    updateSemesterGrade, toggleDropSubject, toggleSemesterExclude, editSubjectName, addSubject, removeAddedSubject, cgpa,
   } = useApp();
 
   const { overall } = cgpa;
@@ -43,6 +43,7 @@ export default function Calculator({ embedded = false }) {
             customizations={semesterCustomizations}
             onGradeChange={(subjectId, point) => updateSemesterGrade(sem.semesterIndex, subjectId, point)}
             onToggleDrop={(subjectId) => toggleDropSubject(sem.semesterIndex, subjectId)}
+            onToggleExclude={toggleSemesterExclude}
             onNameEdit={(subjectId, name) => editSubjectName(sem.semesterIndex, subjectId, name)}
             onAddSubject={(subject) => addSubject(sem.semesterIndex, subject)}
             onRemoveAdded={(subjectId) => removeAddedSubject(sem.semesterIndex, subjectId)}

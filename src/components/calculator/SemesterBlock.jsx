@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronRight, Plus, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Plus, Pencil, X } from 'lucide-react';
 import GradeSelector from './GradeSelector';
 
 function SubjectRow({ subject, gradePoint, onGradeChange, onToggleDrop, onNameEdit, isDropped }) {
@@ -28,7 +28,7 @@ function SubjectRow({ subject, gradePoint, onGradeChange, onToggleDrop, onNameEd
           />
         ) : (
           <span className="subject-name" onClick={() => { setEditName(subject.name); setEditing(true); }} title="Click to edit">
-            {subject.name}
+            {subject.name} <Pencil size={11} className="edit-icon" />
           </span>
         )}
       </td>
@@ -99,12 +99,18 @@ function AddSubjectForm({ onAdd, onCancel }) {
   );
 }
 
-function CreditSummarySmall({ totalCredits, totalPoints, gpa, semesterIndex }) {
+function CreditSummarySmall({ totalCredits, totalPoints, gpa, semesterIndex, excluded }) {
   return (
     <div className="semester-stats">
-      <span><strong>{totalCredits}</strong> Credits</span>
-      <span><strong>{totalPoints.toFixed(1)}</strong> Points</span>
-      <span className="gpa-badge">GPA: <strong>{gpa.toFixed(2)}</strong></span>
+      {excluded ? (
+        <span className="excluded-badge">Excluded</span>
+      ) : (
+        <>
+          <span><strong>{totalCredits}</strong> Credits</span>
+          <span><strong>{totalPoints.toFixed(1)}</strong> Points</span>
+          <span className="gpa-badge">GPA: <strong>{gpa.toFixed(2)}</strong></span>
+        </>
+      )}
     </div>
   );
 }
@@ -119,11 +125,13 @@ export default function SemesterBlock({
   onNameEdit,
   onAddSubject,
   onRemoveAdded,
+  onToggleExclude,
 }) {
   const [isOpen, setIsOpen] = useState(true);
   const [showAddForm, setShowAddForm] = useState(false);
 
   const custom = customizations?.[semesterIndex] || {};
+  const excluded = !!custom.excluded;
   const dropped = new Set(custom.dropped || []);
   const names = custom.customNames || {};
   const added = custom.added || [];
@@ -149,15 +157,25 @@ export default function SemesterBlock({
   const gpa = totalCredits ? totalPoints / totalCredits : 0;
 
   return (
-    <div className={`semester-block ${isOpen ? 'open' : ''}`}>
+    <div className={`semester-block ${isOpen ? 'open' : ''} ${excluded ? 'semester-excluded' : ''}`}>
       <button className="semester-header" onClick={() => setIsOpen(!isOpen)}>
         <div className="semester-title">
           {isOpen ? <ChevronDown size={18} /> : <ChevronRight size={18} />}
           <h3>{semester.name}</h3>
         </div>
-        <CreditSummarySmall totalCredits={totalCredits} totalPoints={totalPoints} gpa={gpa} semesterIndex={semesterIndex} />
+        <CreditSummarySmall totalCredits={totalCredits} totalPoints={totalPoints} gpa={gpa} semesterIndex={semesterIndex} excluded={excluded} />
       </button>
-      {isOpen && (
+      <div className="semester-exclude-bar">
+        <label className="exclude-label">
+          <input
+            type="checkbox"
+            checked={excluded}
+            onChange={() => onToggleExclude(semesterIndex)}
+          />
+          <span>Skip this semester (exclude from CGPA)</span>
+        </label>
+      </div>
+      {!excluded && isOpen && (
         <div className="semester-body">
           <div className="table-wrap">
             <table>

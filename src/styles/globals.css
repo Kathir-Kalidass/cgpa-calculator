@@ -121,6 +121,18 @@ a {
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.profile-card:hover {
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.profile-card.active {
+  border-color: var(--primary);
+  background: rgba(180, 83, 9, 0.15);
 }
 
 /* Main panel */
@@ -396,6 +408,44 @@ select:focus, input:focus {
   background: var(--border);
 }
 
+.semester-excluded .semester-header {
+  opacity: 0.55;
+}
+
+.semester-excluded .semester-header:hover {
+  opacity: 0.75;
+}
+
+.semester-exclude-bar {
+  padding: 5px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.exclude-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  cursor: pointer;
+  user-select: none;
+}
+
+.exclude-label input {
+  min-height: auto;
+  width: 14px;
+  height: 14px;
+  accent-color: var(--danger);
+}
+
+.excluded-badge {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--danger);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 .semester-title {
   display: flex;
   align-items: center;
@@ -474,11 +524,24 @@ tr.dropped {
   cursor: pointer;
   border-bottom: 1px dashed var(--border);
   padding: 2px 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .subject-name:hover {
   border-color: var(--primary);
   color: var(--primary);
+}
+
+.subject-name .edit-icon {
+  opacity: 0;
+  transition: opacity 0.15s;
+  color: var(--muted);
+}
+
+.subject-name:hover .edit-icon {
+  opacity: 1;
 }
 
 .name-input {
@@ -661,6 +724,22 @@ tr.dropped {
   color: var(--muted);
   font-size: 13px;
   border-top: 1px solid var(--border);
+}
+
+/* Profile Form */
+.profile-form {
+  display: grid;
+  gap: 16px;
+  max-width: 480px;
+}
+
+.profile-form label span {
+  margin-bottom: 6px;
+}
+
+.profile-form input,
+.profile-form select {
+  width: 100%;
 }
 
 /* Loading */

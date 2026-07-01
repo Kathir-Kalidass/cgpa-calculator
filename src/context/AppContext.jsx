@@ -56,6 +56,13 @@ export function AppProvider({ children }) {
     });
   }
 
+  function toggleSemesterExclude(semesterIndex) {
+    updateCustomization(semesterIndex, (custom) => ({
+      ...custom,
+      excluded: !custom.excluded,
+    }));
+  }
+
   function editSubjectName(semesterIndex, subjectId, name) {
     updateCustomization(semesterIndex, (custom) => ({
       ...custom,
@@ -112,6 +119,7 @@ export function AppProvider({ children }) {
     updateSetting,
     updateSemesterGrade,
     toggleDropSubject,
+    toggleSemesterExclude,
     editSubjectName,
     addSubject,
     removeAddedSubject,

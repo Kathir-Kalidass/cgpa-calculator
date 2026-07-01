@@ -4,6 +4,7 @@ import About from '../pages/About';
 import Calculator from '../pages/Calculator';
 import History from '../pages/History';
 import Home from '../pages/Home';
+import Profile from '../pages/Profile';
 import NotFound from '../pages/NotFound';
 import Report from '../pages/Report';
 
@@ -13,6 +14,7 @@ export default function AppRoutes() {
       <Route element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route path="calculator" element={<Calculator />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="report" element={<Report />} />
         <Route path="history" element={<History />} />
         <Route path="about" element={<About />} />
