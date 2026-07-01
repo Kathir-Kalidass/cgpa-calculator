@@ -57,10 +57,18 @@ export function AppProvider({ children }) {
   }
 
   function toggleSemesterExclude(semesterIndex) {
-    updateCustomization(semesterIndex, (custom) => ({
-      ...custom,
-      excluded: !custom.excluded,
-    }));
+    const regulation = settings.regulation;
+    setSemesterCustomizations((current) => {
+      const reg = current[regulation]
+        ? { ...current[regulation] }
+        : {};
+      const sem = reg[semesterIndex]
+        ? { ...reg[semesterIndex] }
+        : {};
+      sem.excluded = !sem.excluded;
+      reg[semesterIndex] = sem;
+      return { ...current, [regulation]: reg };
+    });
   }
 
   function editSubjectName(semesterIndex, subjectId, name) {

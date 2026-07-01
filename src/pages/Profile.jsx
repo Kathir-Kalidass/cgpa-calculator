@@ -1,8 +1,8 @@
-import { GraduationCap, Save } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
 export default function Profile() {
-  const { student, setStudent, settings, updateSetting, subjects } = useApp();
+  const { student, setStudent, settings, updateSetting } = useApp();
 
   function update(field, value) {
     setStudent((prev) => ({ ...prev, [field]: value }));
@@ -45,17 +45,15 @@ export default function Profile() {
           <label>
             <span>Department</span>
             <select value={settings.department} onChange={(e) => updateSetting('department', e.target.value)}>
-              {subjects.departments?.map((d) => (
-                <option key={d.id} value={d.id}>{d.name}</option>
-              ))}
+              <option value="cse">CSE</option>
+              <option value="it">IT</option>
             </select>
           </label>
           <label>
             <span>Regulation</span>
             <select value={settings.regulation} onChange={(e) => updateSetting('regulation', e.target.value)}>
-              {subjects.regulations?.map((r) => (
-                <option key={r.id} value={r.id}>{r.name}</option>
-              ))}
+              <option value="2023">2023</option>
+              <option value="2026">2026</option>
             </select>
           </label>
         </div>
