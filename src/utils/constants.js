@@ -7,9 +7,9 @@ export const STORAGE_KEYS = {
 };
 
 export const LOGOS = {
-  app: '/app_logo.png',
+  app: '/logo.png',
   annaUniversity: '/anna-university-logo.jpg',
-  report: '/app_logo.png',
+  report: '/report-logo.png',
 };
 
 export const DEFAULT_STUDENT = {

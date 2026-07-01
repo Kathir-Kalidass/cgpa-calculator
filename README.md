@@ -1,13 +1,20 @@
-# CGPA Calculator Web App
+# CGPA Calculator
 
-A React + Vite web app to calculate semester-wise GPA and overall CGPA for Anna University CSE/IT with local persistence, dark mode, search, export/import, and charts.
+A React + Vite app focused on Anna University CGPA calculation and professional PDF reports for CSE/IT departments.
 
 ## Project Structure
 - `index.html` — Vite HTML entry
-- `src/main.jsx` — React entry point
-- `src/App.jsx` — Calculator UI and logic
-- `src/data.js` — Grade options and syllabus data
-- `src/styles.css` — App styles
+- `public/` — app logo, report logo, Anna University logo
+- `src/components/` — common UI, calculator, dashboard, and report components
+- `src/pages/` — Dashboard, Calculator, Report, History, About, NotFound
+- `src/layouts/` — main shell and report layout
+- `src/data/regulations/` — department/regulation JSON subject data
+- `src/hooks/` — CGPA, subjects, and local storage hooks
+- `src/services/` — calculator, storage, export, PDF, and report services
+- `src/utils/` — constants, grade points, formula, formatting, validation
+- `src/context/` — app and theme state providers
+- `src/routes/` — React Router route definitions
+- `src/styles/` — global, variable, and report CSS
 
 ## Quick Start (local)
 Install dependencies and start the Vite development server:
@@ -24,7 +31,10 @@ Then open the local URL printed by Vite.
 - Output directory: `dist`
 - Netlify/Vercel: connect the repo and use the build command/output directory above.
 
+## PDF Report
+The report preview includes college logo, student details, department, regulation, semester, subject-wise grades, credits, grade points, points earned, semester GPA, overall CGPA, total credits, formula, and generation timestamp. Export uses `jsPDF` + `html2canvas`.
+
 ## Notes
 - Data persists in your browser via `localStorage`.
-- Use Export/Import to back up and restore your data.
-- Dark Mode toggle is saved per browser.
+- Public assets currently include `logo.png`, `report-logo.png`, `app_logo.png`, and `anna-university-logo.jpg`.
+- Dark mode is saved per browser.
