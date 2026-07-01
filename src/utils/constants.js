@@ -6,6 +6,7 @@ export const STORAGE_KEYS = {
   grades: 'cgpa_calculator_data',
   customizations: 'cgpa_calculator_customizations',
   history: 'cgpa_calculator_history',
+  student: 'cgpa_calculator_student',
   theme: 'darkMode',
 };
 

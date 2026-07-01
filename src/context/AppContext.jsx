@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useContext, useMemo } from 'react';
 import { useCGPA } from '../hooks/useCGPA';
 import { useGradesStorage, useLocalStorage } from '../hooks/useLocalStorage';
 import { useSubjects } from '../hooks/useSubjects';
@@ -12,7 +12,7 @@ export function AppProvider({ children }) {
   const [semesterGrades, setSemesterGrades, updateGrade] = useGradesStorage(STORAGE_KEYS.grades, {});
   const [semesterCustomizations, setSemesterCustomizations] = useLocalStorage(STORAGE_KEYS.customizations, {});
   const [history, setHistory] = useLocalStorage(STORAGE_KEYS.history, []);
-  const [student, setStudent] = useState(DEFAULT_STUDENT);
+  const [student, setStudent] = useLocalStorage(STORAGE_KEYS.student, DEFAULT_STUDENT);
 
   const subjects = useSubjects(settings);
 
@@ -36,11 +36,11 @@ export function AppProvider({ children }) {
 
   function updateCustomization(semesterIndex, updater) {
     setSemesterCustomizations((current) => {
-      const next = { ...current };
-      if (!next[settings.regulation]) next[settings.regulation] = {};
-      if (!next[settings.regulation][semesterIndex]) next[settings.regulation][semesterIndex] = {};
-      next[settings.regulation][semesterIndex] = updater(next[settings.regulation][semesterIndex]);
-      return next;
+      const prevReg = current[settings.regulation];
+      const prevSem = prevReg?.[semesterIndex] || {};
+      const newSem = updater({ ...prevSem });
+      const newReg = { ...(prevReg || {}), [semesterIndex]: newSem };
+      return { ...current, [settings.regulation]: newReg };
     });
   }
 

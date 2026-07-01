@@ -1,11 +1,10 @@
-import { BarChart3, BookOpen, Calculator, FileText, GraduationCap, History, LayoutDashboard, User } from 'lucide-react';
+import { BarChart3, BookOpen, FileText, GraduationCap, History, LayoutDashboard, User } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useApp } from '../../context/AppContext';
 import { LOGOS } from '../../utils/constants';
 
 const links = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/calculator', label: 'CGPA Calculator', icon: Calculator },
   { to: '/profile', label: 'Profile', icon: User },
   { to: '/report', label: 'Reports', icon: FileText },
   { to: '/history', label: 'History', icon: History },

@@ -1,6 +1,11 @@
 import { GraduationCap } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 
+const BATCHES = [
+  '2020 Batch', '2021 Batch', '2022 Batch', '2023 Batch',
+  '2024 Batch', '2025 Batch', '2026 Batch', '2027 Batch', '2028 Batch',
+];
+
 export default function Profile() {
   const { student, setStudent, settings, updateSetting } = useApp();
 
@@ -32,7 +37,9 @@ export default function Profile() {
           </label>
           <label>
             <span>Batch</span>
-            <input value={student.batch} onChange={(e) => update('batch', e.target.value)} placeholder="e.g. 2023 Batch" />
+            <select value={student.batch} onChange={(e) => update('batch', e.target.value)}>
+              {BATCHES.map((b) => <option key={b} value={b}>{b}</option>)}
+            </select>
           </label>
         </div>
       </div>

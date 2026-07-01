@@ -24,18 +24,17 @@ export function useGradesStorage(key, initialValue) {
 
   const updateGrade = useCallback((regulation, semesterIndex, subjectId, point) => {
     setValue((current) => {
-      const next = { ...current };
-      if (!next[regulation]) next[regulation] = {};
-      if (!next[regulation][semesterIndex]) next[regulation][semesterIndex] = {};
+      const prevReg = current[regulation];
+      const prevSem = prevReg?.[semesterIndex] || {};
+      let newSem;
       if (point == null) {
-        delete next[regulation][semesterIndex][subjectId];
+        newSem = { ...prevSem };
+        delete newSem[subjectId];
       } else {
-        next[regulation][semesterIndex] = {
-          ...next[regulation][semesterIndex],
-          [subjectId]: Number(point),
-        };
+        newSem = { ...prevSem, [subjectId]: Number(point) };
       }
-      return next;
+      const newReg = { ...(prevReg || {}), [semesterIndex]: newSem };
+      return { ...current, [regulation]: newReg };
     });
   }, []);
 
