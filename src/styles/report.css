@@ -14,7 +14,7 @@
 
 .report-header {
   display: grid;
-  grid-template-columns: 80px 1fr 80px;
+  grid-template-columns: 100px 1fr 100px;
   gap: 16px;
   align-items: center;
   text-align: center;
@@ -24,8 +24,8 @@
 }
 
 .report-header img {
-  width: 65px;
-  height: 65px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
 }
 
