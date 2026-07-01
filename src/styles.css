@@ -1,0 +1,61 @@
+*{box-sizing:border-box}
+:root{--bg-color:#fff;--text-color:#333;--container-bg:#fff;--control-bg:#f8f9fa;--border-color:#ddd;--header-bg:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--button-bg:linear-gradient(135deg,#27ae60,#2ecc71);--danger-bg:linear-gradient(135deg,#e74c3c,#c0392b);--table-header-bg:linear-gradient(135deg,#34495e,#2c3e50);--results-bg:linear-gradient(135deg,#f1f2f6,#dfe4ea);--highlight-bg:#fff;--stat-bg:#fff}
+.dark-mode{--bg-color:#2c3e50;--text-color:#ecf0f1;--container-bg:#34495e;--control-bg:#2c3e50;--border-color:#7f8c8d;--header-bg:linear-gradient(135deg,#2c3e50,#34495e);--button-bg:linear-gradient(135deg,#27ae60,#2ecc71);--danger-bg:linear-gradient(135deg,#e74c3c,#c0392b);--table-header-bg:linear-gradient(135deg,#2c3e50,#34495e);--results-bg:linear-gradient(135deg,#3b516b,#2c3e50);--highlight-bg:#2f4054;--stat-bg:#2f4054}
+body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:var(--header-bg);color:var(--text-color);margin:0;min-height:100vh;padding:20px 0;transition:background .3s,color .3s}
+.container{max-width:1000px;margin:0 auto;background:var(--container-bg);padding:30px;border-radius:15px;box-shadow:0 10px 30px rgba(0,0,0,.2);transition:background .3s}
+h1{text-align:center;color:var(--text-color);margin-bottom:10px;font-size:2.5em;font-weight:300}
+.subtitle{text-align:center;color:#7f8c8d;margin-bottom:30px;font-size:1.1em}
+.dark-mode .subtitle{color:#bdc3c7}
+h2{background:var(--header-bg);color:#fff;padding:15px 20px;border-radius:8px;margin:25px 0 15px 0;font-size:1.3em;box-shadow:0 4px 15px rgba(52,152,219,.3)}
+.controls-section{background:var(--control-bg);padding:20px;border-radius:10px;margin-bottom:25px;border:2px solid var(--border-color)}
+.control-group{display:flex;align-items:center;gap:15px;margin-bottom:15px;flex-wrap:wrap}
+.control-group:last-child{margin-bottom:0}
+label{font-weight:600;color:var(--text-color);min-width:200px}
+select,input,button{padding:10px 15px;border:2px solid var(--border-color);border-radius:6px;font-size:14px;transition:all .3s ease}
+select:focus,input:focus{outline:none;border-color:#3498db;box-shadow:0 0 0 3px rgba(52,152,219,.1)}
+input{background:#fff;color:var(--text-color)}
+.dark-mode input{background:#2c3e50;color:var(--text-color);border-color:var(--border-color)}
+button{background:linear-gradient(135deg,#27ae60,#2ecc71);color:#fff;border:none;cursor:pointer;font-weight:600;min-width:120px}
+button:hover{background:linear-gradient(135deg,#229954,#27ae60);transform:translateY(-2px);box-shadow:0 4px 15px rgba(39,174,96,.3)}
+.danger-btn{background:linear-gradient(135deg,#e74c3c,#c0392b)!important}
+.danger-btn:hover{background:linear-gradient(135deg,#c0392b,#a93226)!important;box-shadow:0 4px 15px rgba(231,76,60,.3)!important}
+table{width:100%;margin-bottom:20px;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+.dark-mode table{background:var(--container-bg)}
+th,td{padding:12px 15px;border-bottom:1px solid #eee;text-align:left}
+.dark-mode th,.dark-mode td{border-bottom-color:var(--border-color)}
+th{position:sticky;top:0;z-index:1;background:linear-gradient(135deg,#34495e,#2c3e50);color:#fff;font-weight:600;text-transform:uppercase;font-size:.9em;letter-spacing:.5px}
+tr:hover{background-color:#f8f9fa}
+.dark-mode tr:hover{background-color:rgba(255,255,255,.06)}
+tr:last-child td{border-bottom:none}
+.grade-select{width:120px;background:#fff}
+.dark-mode .grade-select{background:#2c3e50;color:var(--text-color);border-color:var(--border-color)}
+.grade-chips{display:flex;gap:8px;flex-wrap:wrap}
+.grade-chip{padding:6px 10px;border:1px solid #d0d7de;border-radius:16px;background:#fff;color:#2c3e50;cursor:pointer;user-select:none;transition:.2s}
+.grade-chip:hover{background:#f0f6ff;border-color:#3498db;transform:none;box-shadow:none}
+.grade-chip.active{background:#3498db;color:#fff;border-color:#3498db}
+.grade-input{display:flex;align-items:center;gap:10px}
+.grade-input .hidden-select{display:none}
+
+/* Row density */
+.density-compact th, .density-compact td { padding:6px 8px }
+.density-compact .grade-select { width:100px }
+.results{background:var(--results-bg);padding:25px;margin:25px 0;font-weight:600;border-radius:10px;border-left:5px solid #3498db;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+.results h3{margin:30px 0 15px;color:var(--text-color)}
+.results h3:first-child{margin-top:0}
+.details-body{padding:10px 0;font-weight:400}
+.formula-line{margin-top:8px}
+.cgpa-highlight{font-size:1.4em;color:var(--text-color);text-align:center;padding:15px;background:var(--highlight-bg);border-radius:8px;margin-top:15px;box-shadow:0 2px 10px rgba(0,0,0,.1)}
+.semester-gpa{display:inline-block;margin:5px 10px 5px 0;padding:8px 15px;background:var(--highlight-bg);border-radius:20px;border:2px solid #3498db;color:var(--text-color)}
+.data-status{background:#d4edda;color:#155724;padding:10px 15px;border-radius:6px;margin-bottom:15px;border:1px solid #c3e6cb;font-size:.9em}
+.dark-mode .data-status{background:rgba(40,167,69,.2);color:#d4edda;border-color:rgba(40,167,69,.4)}
+.no-data-status{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+.dark-mode .no-data-status{background:rgba(220,53,69,.15);color:#f8d7da;border-color:rgba(220,53,69,.4)}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;margin-top:20px}
+.stat-card{background:var(--stat-bg);padding:20px;border-radius:8px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.1);border-top:4px solid #3498db}
+.stat-value{font-size:2em;font-weight:700;color:var(--text-color);margin-bottom:5px}
+.stat-label{color:#7f8c8d;font-size:.9em;text-transform:uppercase;letter-spacing:.5px}
+.dark-mode .stat-label{color:#bdc3c7}
+@media (max-width:768px){.container{padding:20px 15px;margin:10px}h1{font-size:2em}.control-group{flex-direction:column;align-items:stretch}label{min-width:auto}th,td{font-size:12px;padding:8px 10px}.stats-grid{grid-template-columns:1fr}}
+.loading{opacity:.6;pointer-events:none}
+.fade-in{animation:fadeIn .5s ease-in}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}

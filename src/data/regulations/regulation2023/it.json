@@ -1,0 +1,341 @@
+{
+  "department": "IT",
+  "regulation": "2023",
+  "semesters": [
+    {
+      "name": "Semester I",
+      "courses": [
+        {
+          "code": "HS3151",
+          "name": "English for Communication - I",
+          "credits": 3
+        },
+        {
+          "code": "MA3151",
+          "name": "Matrices and Calculus",
+          "credits": 4
+        },
+        {
+          "code": "PH3151",
+          "name": "Engineering Physics",
+          "credits": 3
+        },
+        {
+          "code": "CY3151",
+          "name": "Engineering Chemistry",
+          "credits": 3
+        },
+        {
+          "code": "EE3152",
+          "name": "Fundamentals of Electrical and Electronics Engineering",
+          "credits": 3
+        },
+        {
+          "code": "GE3153",
+          "name": "Programming in C",
+          "credits": 4
+        },
+        {
+          "code": "GE3154",
+          "name": "Heritage of Tamils",
+          "credits": 1
+        },
+        {
+          "code": "PH3161",
+          "name": "Physics Laboratory",
+          "credits": 1
+        },
+        {
+          "code": "GE3162",
+          "name": "English Laboratory - I",
+          "credits": 1
+        }
+      ]
+    },
+    {
+      "name": "Semester II",
+      "courses": [
+        {
+          "code": "HS3251",
+          "name": "English For Communication – II",
+          "credits": 3
+        },
+        {
+          "code": "MA3251",
+          "name": "Ordinary Differential Equations and Transform Techniques",
+          "credits": 4
+        },
+        {
+          "code": "PH3202",
+          "name": "Physics of Electronic Materials and Devices",
+          "credits": 3
+        },
+        {
+          "code": "GE3155",
+          "name": "Engineering Drawing",
+          "credits": 4
+        },
+        {
+          "code": "IT3201",
+          "name": "Information Technology Essentials",
+          "credits": 4
+        },
+        {
+          "code": "GE3251",
+          "name": "Tamils and Technology",
+          "credits": 1
+        },
+        {
+          "code": "GE3161",
+          "name": "Engineering Practices Laboratory",
+          "credits": 2
+        },
+        {
+          "code": "CY3161",
+          "name": "Chemistry Laboratory",
+          "credits": 1
+        },
+        {
+          "code": "GE3261",
+          "name": "English Laboratory - II",
+          "credits": 1
+        }
+      ]
+    },
+    {
+      "name": "Semester III",
+      "courses": [
+        {
+          "code": "MA23C09",
+          "name": "Finite State Automata and Discrete Structures",
+          "credits": 4
+        },
+        {
+          "code": "IT23301",
+          "name": "Digital Logic and Design",
+          "credits": 4
+        },
+        {
+          "code": "IT23302",
+          "name": "Data Structures",
+          "credits": 4
+        },
+        {
+          "code": "IT23303",
+          "name": "Database Management Systems",
+          "credits": 4
+        },
+        {
+          "code": "IT23304",
+          "name": "Object Oriented Programming",
+          "credits": 2
+        },
+        {
+          "code": "IT23U01",
+          "name": "Standards – IT",
+          "credits": 1
+        }
+      ]
+    },
+    {
+      "name": "Semester IV",
+      "courses": [
+        {
+          "code": "MA23C05",
+          "name": "Probability and Statistics",
+          "credits": 4
+        },
+        {
+          "code": "IT23401",
+          "name": "Advanced Data Structures",
+          "credits": 4
+        },
+        {
+          "code": "IT23C01",
+          "name": "Design and Analysis of Algorithms",
+          "credits": 3
+        },
+        {
+          "code": "IT23402",
+          "name": "Computer Organization and Architecture",
+          "credits": 3
+        },
+        {
+          "code": "IT23403",
+          "name": "Software Engineering",
+          "credits": 3
+        },
+        {
+          "code": "IT23C02",
+          "name": "Operating Systems",
+          "credits": 4
+        },
+        {
+          "code": "IT23L01",
+          "name": "Self-Learning Course",
+          "credits": 1
+        },
+        {
+          "code": "SDC1",
+          "name": "Skill Development Course I",
+          "credits": 2
+        }
+      ]
+    },
+    {
+      "name": "Semester V",
+      "courses": [
+        {
+          "code": "IT23501",
+          "name": "Computer Networks",
+          "credits": 4
+        },
+        {
+          "code": "IT23502",
+          "name": "Web Programming",
+          "credits": 4
+        },
+        {
+          "code": "IT23503",
+          "name": "Compiler Design",
+          "credits": 3
+        },
+        {
+          "code": "IT23504",
+          "name": "Machine Learning",
+          "credits": 4
+        },
+        {
+          "code": "PE1",
+          "name": "Professional Elective I",
+          "credits": 3
+        },
+        {
+          "code": "UC23E01",
+          "name": "Engineering Entrepreneurship Development",
+          "credits": 3
+        },
+        {
+          "code": "IOC1",
+          "name": "Industry Oriented Course I",
+          "credits": 1
+        },
+        {
+          "code": "SDC2",
+          "name": "Skill Development Course II",
+          "credits": 2
+        },
+        {
+          "code": "IT23505",
+          "name": "Societal Oriented Project",
+          "credits": 1
+        }
+      ]
+    },
+    {
+      "name": "Semester VI",
+      "courses": [
+        {
+          "code": "IT23601",
+          "name": "Distributed Systems and Computing",
+          "credits": 3
+        },
+        {
+          "code": "IT23602",
+          "name": "Natural Language and Image Processing",
+          "credits": 4
+        },
+        {
+          "code": "ETC1",
+          "name": "Emerging Technology Course I",
+          "credits": 3
+        },
+        {
+          "code": "PE2",
+          "name": "Professional Elective II",
+          "credits": 3
+        },
+        {
+          "code": "PE3",
+          "name": "Professional Elective III",
+          "credits": 3
+        },
+        {
+          "code": "OE1",
+          "name": "Open Elective – I",
+          "credits": 3
+        },
+        {
+          "code": "SDC3",
+          "name": "Skill Development Course III",
+          "credits": 2
+        },
+        {
+          "code": "IOC2",
+          "name": "Industry Oriented Course II",
+          "credits": 1
+        },
+        {
+          "code": "IT23U02",
+          "name": "Perspectives of Sustainability Development",
+          "credits": 3
+        }
+      ]
+    },
+    {
+      "name": "Semester VII",
+      "courses": [
+        {
+          "code": "IT23701",
+          "name": "Cryptography and Network Security",
+          "credits": 4
+        },
+        {
+          "code": "ETC2",
+          "name": "Emerging Technology Course II",
+          "credits": 3
+        },
+        {
+          "code": "PE4",
+          "name": "Professional Elective IV",
+          "credits": 3
+        },
+        {
+          "code": "PE5",
+          "name": "Professional Elective V",
+          "credits": 3
+        },
+        {
+          "code": "PE6",
+          "name": "Professional Elective VI",
+          "credits": 3
+        },
+        {
+          "code": "OE2",
+          "name": "Open Elective II",
+          "credits": 3
+        },
+        {
+          "code": "IOC3",
+          "name": "Industry Oriented Course III",
+          "credits": 1
+        },
+        {
+          "code": "IT23702",
+          "name": "Software Development Project Laboratory",
+          "credits": 2
+        }
+      ]
+    },
+    {
+      "name": "Semester VIII",
+      "courses": [
+        {
+          "code": "IT23801",
+          "name": "Project Work / Internship cum Project Work",
+          "credits": 8
+        }
+      ]
+    }
+  ]
+}

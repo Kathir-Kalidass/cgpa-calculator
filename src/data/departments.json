@@ -1,0 +1,12 @@
+[
+  {
+    "id": "cse",
+    "name": "Computer Science Engineering",
+    "shortName": "CSE"
+  },
+  {
+    "id": "it",
+    "name": "Information Technology",
+    "shortName": "IT"
+  }
+]
